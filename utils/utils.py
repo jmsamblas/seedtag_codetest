@@ -537,7 +537,7 @@ def plot_representations(data, labels, classes, n_images = None, method = "defau
                 
     fig = plt.figure(figsize = (15, 15))
     ax = fig.add_subplot(111)
-    scatter = ax.scatter(data[:, 0], data[:, 1], c = labels, cmap = 'hsv')
+    scatter = ax.scatter(data[:, 0], data[:, 1], c = labels)
     handles, _ = scatter.legend_elements(num = None)
     legend = plt.legend(handles = handles, labels = classes)
     plt.savefig("images/{}.png".format(method), dpi=300)
