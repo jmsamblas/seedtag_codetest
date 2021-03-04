@@ -68,7 +68,7 @@ def train(model, iterator, optimizer, criterion, scheduler, device):
 #####################################################################################
 #####################################################################################
 
-def adversarial_training(model, iterator, optimizer, criterion, scheduler, device, epsilon = 0.1):
+def adversarial_training(model, iterator, optimizer, criterion, scheduler, device, epsilon = 0.001):
     
     epoch_loss = 0
     epoch_acc_1 = 0
@@ -168,7 +168,7 @@ def evaluate(model, iterator, criterion, device):
 #####################################################################################
 #####################################################################################
 
-def evaluate_under_attack(model, iterator, criterion, device, epsilon=0.1):
+def evaluate_under_attack(model, iterator, criterion, device, epsilon=0.001):
     
     epoch_loss = 0
     epoch_acc_1 = 0
