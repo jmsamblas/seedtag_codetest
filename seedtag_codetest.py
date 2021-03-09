@@ -173,7 +173,9 @@ for i, eps in enumerate(epsilons):
   adv_x_list.append(adv_x)
   display_images(model, adv_x, descriptions[i])
 
-"""El siguiente bloque de código calcula la diferencia a nivel de píxel en formato RGB entre imágenes normales y adversarias para los valores de epsilon calculados anteriormente. Podemos ver que valores de eps menores o iguales a 0.001 obtienen un 98% de píxeles prácticamente iguales a la imagen original. De este modo, parece que eps = 0.001 es un buen límite intermedio, ya que proporciona prestaciones realmente bajas (20% de confidencia) a la vez que hace que las imágenes adversarias sean prácticamente indistinguibles.
+"""######## IGNORAR ESTE BLOQUE ########
+
+El siguiente bloque de código calcula la diferencia a nivel de píxel en formato RGB entre imágenes normales y adversarias para los valores de epsilon calculados anteriormente. Podemos ver que valores de eps menores o iguales a 0.001 obtienen un 98% de píxeles prácticamente iguales a la imagen original. De este modo, parece que eps = 0.001 es un buen límite intermedio, ya que proporciona prestaciones realmente bajas (20% de confidencia) a la vez que hace que las imágenes adversarias sean prácticamente indistinguibles.
 
 Por tanto, de aquí en adelante utilizaremos este valor siempre que tengamos que utilizar un ataque adversario en este notebook (cuando entrenemos la red nosotros).
 
@@ -202,6 +204,7 @@ for counter_adv_x, adv_x in enumerate(adv_x_list):
     print('imagen adversaria, píxel 0,1, RGB:', image_adv_back_to_normal[0,1,:])
 
     difference_img = image_back_to_normal - image_adv_back_to_normal
+    # difference_img = np.abs(image_back_to_normal.astype(np.int16) - image_adv_back_to_normal.astype(np.int16))
     print("porcentaje de píxeles cuya diferencia es mayor a 1: {}%".format(round(100*np.count_nonzero(difference_img > 1)/np.count_nonzero(difference_img >= 0)),2))
     print("porcentaje de píxeles cuya diferencia es menor a 1: {}%".format(round(100*np.count_nonzero(difference_img <= 1)/np.count_nonzero(difference_img >= 0)),2))
 
